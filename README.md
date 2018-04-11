@@ -17,20 +17,22 @@ the development needed to create a custom web based UI.
 # Included Features:
 
   1. Login.aspx
-      - The Login sample page is a full integration of the Centrify Authentication API's. (Described in the Centrify Development Portal at http://developer.centrify.com/site/global/documentation/api_reference/security/start_authentication/index.gsp)
+      - The Login sample page is a full integration of the Centrify Authentication API's. (Described in the Centrify Development Portal at https://developer.centrify.com/v1.0/reference#post_security-startauthentication)
         The integration includes support for the Centrify Adaptive Authentication Profiles, User Self Service (lock out and forgot password), and Social Login.
   2. Register.aspx
-      - The Registration sample page is a simple example of user self-registration. This page uses an admin service account to call the Centrify Create User API ( http://developer.centrify.com/site/global/documentation/api_reference/cdirectory_service/create_user/index.gsp)
+      - The Registration sample page is a simple example of user self-registration. This page uses an admin service account to call the Centrify Create User API ( https://developer.centrify.com/v1.0/reference#post_cdirectoryservice-createuser)
         to create users based on the information that the user populates in the page UI. This is meant to be a simple example that could be expanded on depending on internal use cases (i.e. admin approval flows, etc.). 
-  3. Manage.aspx
+  3. Register_oAuth.aspx
+     - This example is an alternative to Register.aspx that uses OAuth Client Credentials Flow, with the site acting as a confidential client, to call the create user API. OAuth is a more preferred, and secure, way of handling the service account need. OAuth documentation can be found at https://developer.centrify.com/docs/oauth.
+  4. Manage.aspx
       -  The Management page is an example of integrating management functions from the Centrify Management Portal into a custom UI. This page only appears in the API Demo site if the logged in user is a sysadmin in Centrify. This will not be available in the hosted site at https://apidemo.centrify.com
          but is included in this project as an example. The management page supports the creation and modification of users, and the creation and modification of Centrify Roles.
-  4. Applications.aspx
-      -  The Apps page is an example of integrating the Centrify GetUPData API (http://developer.centrify.com/site/global/documentation/api_reference/uprest/get_up_data/index.gsp), which pulls a list of all Single Sign On applications that the logged in user has access to, and displays
+  5. Applications.aspx
+      -  The Apps page is an example of integrating the Centrify GetUPData API (https://developer.centrify.com/v1.0/reference#post_uprest-getupdata), which pulls a list of all Single Sign On applications that the logged in user has access to, and displays
          the application icons and information in the same way as the Centrify User Portal. 
-  5. MyAccount.aspx
+  6. MyAccount.aspx
       - The My Account page is an example of user self-service, allowing the user to edit some portions of their user profile. 
-  6. Logout.aspx
+  7. Logout.aspx
       - The Logout page contains logic to assist with logging the user out of their Centrify session.
       
 # Website Design Details:    
@@ -71,6 +73,12 @@ Note: Installation may differ from environment to environment. Below are the mos
    Note: The user account used as an admin service account needs to have a policy set up in Centrify that does not require MFA. The service account in this example is coded to only use User/Pass for authentication.
     
  "AdminServicePass" value="pass" 
+ 
+ Note: If using OAuth for the user registration page, "Register_oAuth.aspx", the Client ID and Client Secret are used in place of the admin service account. For details on configuring a confidential client, please see https://developer.centrify.com/docs/oauth.
+ 
+ "ClientId" value = "pass"
+ 
+ "ClientSecret" value="ClientId@Domain"
  
  "DefaultDomain" value="@yourdomain.com"
  
