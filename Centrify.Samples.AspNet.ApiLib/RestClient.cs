@@ -66,6 +66,7 @@ namespace Centrify.Samples.AspNet.ApiLib
         public string Call(string method, string jsonPayload)
         {
             var request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(Endpoint + method);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls; //Added to support all TLS types required by remote server
 
             request.Method = "POST";
             request.ContentLength = 0;
