@@ -85,6 +85,8 @@ Note: Installation may differ from environment to environment. Below are the mos
    Note: This domain is hidden from the user. This is the domain that all users that use the registration screen will be created under and it is the domain that all usernames will be concatenated with in the login page.
    
 6. Start the web site in IIS and navigate to it.
+
+For support, please contact devsupport@centrify.com
     
  
 
